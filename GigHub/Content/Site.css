@@ -76,6 +76,7 @@ textarea {
             position: absolute;
             top: 0;
             left: 70px;
+            width: 120px;
         }
 
         .gigs > li .details .artist {
