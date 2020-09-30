@@ -23,6 +23,13 @@ textarea {
     max-width: 280px;
 }
 
+.voffset-2 { margin-top: 2px;}
+.voffset-5 { margin-top: 5px;}
+.voffset-10 { margin-top: 10px;}
+.voffset-20 { margin-top: 20px;}
+.voffset-40 { margin-top: 40px;}
+.voffset-80 { margin-top: 80px;}
+
 /* Bootstrap override styles */
 
 .navbar-inverse {
@@ -79,23 +86,23 @@ textarea {
             width: 120px;
         }
 
-        .gigs > li .details .artist {
-            font-weight: bold;
-            display: block;
-        }
-
-.gigs > li .details .artist {
-    font-size: 15px;
-}
-
-            .gigs > li .date {
-                background: red;
-                color: #fff;
-                text-align: center;
-                width: 60px;
-                -ms-border-radius: 8px;
-                border-radius: 8px;
+            .gigs > li .details .artist {
+                font-weight: bold;
+                display: block;
             }
+
+            .gigs > li .details .artist {
+                font-size: 15px;
+            }
+
+        .gigs > li .date {
+            background: red;
+            color: #fff;
+            text-align: center;
+            width: 60px;
+            -ms-border-radius: 8px;
+            border-radius: 8px;
+        }
 
             .gigs > li .date .month {
                 text-transform: uppercase;
