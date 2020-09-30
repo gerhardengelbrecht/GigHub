@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using GigHub.ValidationModels;
 
 namespace GigHub.ViewModels
 {
