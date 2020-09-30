@@ -2,6 +2,6 @@
 {
     public class FollowingDto
     {
-        public int FolloweeId { get; set; }
+        public string FolloweeId { get; set; }
     }
 }
