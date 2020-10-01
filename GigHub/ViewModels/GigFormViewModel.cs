@@ -1,8 +1,8 @@
 ﻿using GigHub.Models;
+using GigHub.ValidationModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using GigHub.ValidationModels;
 
 namespace GigHub.ViewModels
 {
@@ -23,6 +23,8 @@ namespace GigHub.ViewModels
         public byte Genre { get; set; }
 
         public IEnumerable<Genre> Genres { get; set; }
+
+        public string Heading { get; set; }
 
         public DateTime GetDateTime()
         {
