@@ -39,7 +39,9 @@
 @Scripts.Render("~/bundles/bootstrap")
 @RenderSection("scripts", required: false)
 <script type="text/x-template" id="notifications-template">
-    <li>No new notifications</li>
+    <ul class="notifications">
+        <li>No new notifications</li>
+    </ul>
 </script>
 <script>
     $(document).ready(function() {
@@ -62,7 +64,8 @@
 
         //            return html;
         //        },
-        //        placement: "bottom"
+        //        placement: "bottom",
+        //        template: '<div class="popover popover-notifications" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
         //    });
         //});
 
@@ -72,7 +75,8 @@
             content: function() {
                 return "No new notifications";
             },
-            placement: "bottom"
+            placement: "bottom",
+            template: '<div class="popover popover-notifications" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
         });
     });
 </script>
