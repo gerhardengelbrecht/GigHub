@@ -38,13 +38,41 @@
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 @RenderSection("scripts", required: false)
+<script type="text/x-template" id="notifications-template">
+    <li>No new notifications</li>
+</script>
 <script>
     $(document).ready(function() {
-        $.getJSON("/api/notifications", function(notifications) {
-            $(".js-notifications-count")
-                .text(notifications.length)
-                .removeClass("hide")
-                .addClass("animate__animated animate__bounce");
+        //$.getJSON("/api/notifications", function(notifications) {
+        //    if (notifications.length === 0) {
+        //        return "No notifications";
+        //    }
+
+        //    $(".js-notifications-count")
+        //        .text(notifications.length)
+        //        .removeClass("hide")
+        //        .addClass("animate__animated animate__bounce");
+
+        //    $(".notifications").popover({
+        //        html: true,
+        //        title: "Notifications",
+        //        content: function() {
+        //            var compiled = _.template($("#notifications-template").html());
+        //            var html = compiled({ notifications: notifications });
+
+        //            return html;
+        //        },
+        //        placement: "bottom"
+        //    });
+        //});
+
+        $(".notifications").popover({
+            html: true,
+            title: "Notifications",
+            content: function() {
+                return "No new notifications";
+            },
+            placement: "bottom"
         });
     });
 </script>
