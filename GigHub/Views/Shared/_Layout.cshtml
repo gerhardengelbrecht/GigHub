@@ -41,7 +41,10 @@
 <script>
     $(document).ready(function() {
         $.getJSON("/api/notifications", function(notifications) {
-            $(".js-notifications-count").text(notifications.length).removeClass("hide");
+            $(".js-notifications-count")
+                .text(notifications.length)
+                .removeClass("hide")
+                .addClass("animate__animated animate__bounce");
         });
     });
 </script>
