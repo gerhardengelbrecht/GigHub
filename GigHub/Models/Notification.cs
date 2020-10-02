@@ -18,7 +18,7 @@ namespace GigHub.Models
         {
             if (gig == null)
             {
-                throw new ArgumentNullException("gig");
+                throw new ArgumentNullException(nameof(gig));
 
                 Type = type;
                 Gig = gig;
