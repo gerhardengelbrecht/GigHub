@@ -1,12 +1,12 @@
-﻿using System.Linq;
-using System.Web.Http;
-using GigHub.Dtos;
+﻿using GigHub.Dtos;
 using GigHub.Models;
 using Microsoft.AspNet.Identity;
+using System.Linq;
+using System.Web.Http;
 
 namespace GigHub.Controllers.Api
 {
-    [Authorize]
+    [System.Web.Http.Authorize]
     public class FollowingsController : ApiController
     {
         private readonly ApplicationDbContext _context;
@@ -16,12 +16,12 @@ namespace GigHub.Controllers.Api
             _context = new ApplicationDbContext();
         }
 
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         public IHttpActionResult Follow(FollowingDto dto)
         {
             var userId = User.Identity.GetUserId();
 
-            if (_context.Followings.Any(f => f.FolloweeId == userId && f.FolloweeId == dto.FolloweeId))
+            if (_context.Followings.Any(f => f.FollowerId == userId && f.FolloweeId == dto.FolloweeId))
             {
                 return BadRequest("Following already exists.");
             }
@@ -33,6 +33,25 @@ namespace GigHub.Controllers.Api
             };
 
             _context.Followings.Add(following);
+            _context.SaveChanges();
+
+            return Ok();
+        }
+
+        [System.Web.Http.HttpDelete]
+        public IHttpActionResult Unfollow(string id)
+        {
+            var userId = User.Identity.GetUserId();
+
+            var following = _context.Followings
+                .SingleOrDefault(f => f.FollowerId == userId && f.FolloweeId == id);
+
+            if (following == null)
+            {
+                return NotFound();
+            }
+
+            _context.Followings.Remove(following);
             _context.SaveChanges();
 
             return Ok();
