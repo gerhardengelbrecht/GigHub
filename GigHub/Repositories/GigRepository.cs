@@ -1,5 +1,5 @@
-﻿using System;
-using GigHub.Models;
+﻿using GigHub.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -51,6 +51,11 @@ namespace GigHub.Repositories
                 .Where(g => g.ArtistId == userId && g.DateTime > DateTime.Now && !g.IsCanceled)
                 .Include(g => g.Genre)
                 .ToList();
+        }
+
+        public void Add(Gig gig)
+        {
+            _context.Gigs.Add(gig);
         }
     }
 }
