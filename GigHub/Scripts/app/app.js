@@ -1,30 +1,31 @@
 ﻿var GigsController = function() {
-    var toggleAttendance = function (e)
-    {
-        var button = $(e.target);
+
+    var button;
+
+    var toggleAttendance = function(e) {
+        var fail = function() {
+            alert("Something failed");
+        };
+
+        var done = function() {
+            var text = (button.text() == "Going") ? "Going?" : "Going";
+
+            button.toggleClass("btn-info").toggleClass("btn-default");
+        }
+
+        button = $(e.target);
 
         if (button.hasClass("btn-default")) {
             $.post("/api/attendances", { "gigId": button.attr("data-gig-id") })
-                .done(function() {
-                    button.removeClass("btn-default").addClass("btn-info").text("Going");
-                })
-                .fail(function() {
-                    alert("Something failed");
-                });
+                .done(done)
+                .fail(fail);
         } else {
             $.ajax({
                     url: "api/attendances" + button.attr("data"),
                     method: "DELETE"
                 })
-                .done(function() {
-                    button
-                        .removeClass("btn-info")
-                        .addClass("btn-default")
-                        .text("Going?");
-                })
-                .fail(function() {
-                    alert("Something failed.");
-                });
+                .done(done)
+                .fail(fail);
         }
 
     }
@@ -34,23 +35,23 @@
     };
 
     var toggleFollows = function(e) {
-        var button = $(e.target);
+
+        button = $(e.target);
+
         $.post("/api/followings", { "followeeId": button.attr("js-toggle-follow") })
             .done(function() {
                 butt.text("Following");
             })
-            .fail(function() {
-                alert("Something failed");
-            });
+            .fail(fail);
 
     }
 
-    var initFollows = function () {
+    var initFollows = function() {
         $(".js-toggle-follow").click(toggleFollows);
     }
 
     return {
         initGigs: initGigs,
         initFollows: initFollows
-}
+    }
 }();
