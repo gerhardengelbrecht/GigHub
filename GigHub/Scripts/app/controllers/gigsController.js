@@ -2,6 +2,16 @@
 
     var button;
 
+    var done = function() {
+        var text = (button.text() === "Going") ? "Going?" : "Going";
+
+        button.toggleClass("btn-info").toggleClass("btn-default");
+    }
+
+    var fail = function() {
+        alert("Something went wrong");
+    }
+
     var toggleAttendance = function(e) {
         button = $(e.target);
 
@@ -15,28 +25,12 @@
 
     }
 
-    var initGigs = function() {
-        $(".js-toggle-attendance").click(toggleAttendance);
-    }
-
-    var toggleFollows = function(e) {
-
-        button = $(e.target);
-
-        $.post("/api/followings", { "followeeId": button.attr("js-toggle-follow") })
-            .done(function() {
-                butt.text("Following");
-            })
-            .fail(fail);
-    }
-
-    var initFollows = function() {
-        $(".js-toggle-follow").click(toggleFollows);
+    var init = function(container) {
+        $(container).on("click", ".js-toggle-attendance", toggleAttendance());
     }
 
     return {
-        initGigs: initGigs,
-        initFollows: initFollows
+        init: init
     }
 
 }(AttendanceService);
