@@ -1,6 +1,6 @@
-﻿using System.Data.Entity;
-using GigHub.Core.Models;
+﻿using GigHub.Core.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
 
 namespace GigHub.Persistence
 {
@@ -22,6 +22,11 @@ namespace GigHub.Persistence
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        public void User(ApplicationUser user)
+        {
+
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
