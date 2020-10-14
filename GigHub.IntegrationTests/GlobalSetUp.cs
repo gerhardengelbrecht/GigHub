@@ -13,11 +13,16 @@ namespace GigHub.IntegrationTests
         [SetUp]
         public void SetUp()
         {
+            MigrateDbToLatestVersion();
+
+            Seed();
+        }
+
+        private static void MigrateDbToLatestVersion()
+        {
             var configuration = new GigHub.Migrations.Configuration();
             var migrator = new DbMigrator(configuration);
             migrator.Update();
-
-            Seed();
         }
 
         public void Seed()
